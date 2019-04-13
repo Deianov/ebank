@@ -1,0 +1,33 @@
+<th:block>
+    <h1 class="text-center" th:text="|Hello, ${username}|"></h1>
+    <p class="text-center">Your bank accounts are listed below.</p>
+    <hr/>
+    <p class="text-center">If you want to create an account, click <a th:href="@{/accounts/create}">Here</a></p>
+    <div class="d-flex justify-content-center align-items-center container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">IBan</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="account, iter : ${accounts}">
+                <tr>
+                    <td scope="row" th:text="${iter.index + 1}"></td>
+                    <td scope="row" th:text="${account.iban}"></td>
+                    <td scope="row" th:text="${account.balance}"></td>
+                    <td scope="row">
+                        <a th:href="@{/accounts/deposit/{id}(id=${account.id})}" class="btn btn-success">Deposit</a>
+                        <a th:href="@{/accounts/withdraw/{id}(id=${account.id})}" class="btn btn-danger">Withdraw</a>
+                        <a th:href="@{/accounts/transfer/{id}(id=${account.id})}" class="btn btn-info">Transfer</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</th:block>

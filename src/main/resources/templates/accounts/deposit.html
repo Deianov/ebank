@@ -1,0 +1,23 @@
+<th:block>
+    <div class="text-center">
+        <h1>Deposit</h1>
+        <hr />
+        <div class="d-flex justify-content-center align-items-center container ">
+            <form class="col-md-4" th:action="@{/accounts/deposit/{id}(id=*{id})}" th:method="post" th:object="${bankAccountBindingModel}">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" th:field="*{username}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="iban">IBan</label>
+                    <input type="text" class="form-control" id="iban" placeholder="IBan" th:field="*{iban}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" step="any" class="form-control" id="amount" placeholder="Amount" th:field="*{amount}" required>
+                </div>
+                <button type="submit" class="btn btn-success">Deposit</button>
+            </form>
+        </div>
+    </div>
+</th:block>

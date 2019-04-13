@@ -1,0 +1,7 @@
+<th:block>
+    <h1 class="text-center">Welcome to E-Bank</h1>
+    <p class="text-center">Online Banking System</p>
+    <hr/>
+    <p sec:authorize="isAnonymous()" class="text-center">If you have an account <a th:href="@{/login}">Login</a>, if you
+        don't - <a th:href="@{/register}">Register</a></p>
+</th:block>

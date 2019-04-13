@@ -1,0 +1,36 @@
+<th:block th:fragment>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-color-dark">
+        <a class="navbar-brand h4" th:href="@{/}">E-Bank™</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end row" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active col-md-4">
+                    <a class="nav-link h5" th:href="@{/home}">Home</a>
+                </li>
+                <th:block sec:authorize="isAnonymous()">
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link h5" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link h5" th:href="@{/register}">Register</a>
+                    </li>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item active col-md-4">
+                        <a class="nav-link h5" th:href="@{/transactions}">Transactions</a>
+                    </li>
+                    <li class="nav-item active col-md-4">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="nav-link h5 border-0 text-white bg-transparent" th:href="@{/logout}">Logout
+                            </button>
+                        </form>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </nav>
+</th:block>

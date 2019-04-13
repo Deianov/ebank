@@ -1,0 +1,29 @@
+<th:block>
+    <h1 class="text-center" th:text="|Hello, ${username}|"></h1>
+    <p class="text-center">Your transactions are listed below.</p>
+    <hr />
+    <div class="d-flex justify-content-center align-items-center container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="transaction, iter : ${transactions}">
+                <tr>
+                    <td scope="row" th:text="${iter.index + 1}"></td>
+                    <td scope="row" th:text="${transaction.type}"></td>
+                    <td scope="row" th:text="${transaction.fromAccount.getIban()}"></td>
+                    <td scope="row" th:text="${transaction.toAccount.getIban()}"></td>
+                    <td scope="row" th:text="${transaction.amount}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</th:block>
